@@ -2,18 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/blended_products/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/practice-js-3/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home page</title>
-    <script type="module" crossorigin src="/blended_products/assets/styles-JE8YjOlG.js"></script>
-    <link rel="stylesheet" crossorigin href="/blended_products/assets/styles-CTxpv8u5.css">
+    <script type="module" crossorigin src="/practice-js-3/index.js"></script>
+    <link rel="modulepreload" crossorigin href="/practice-js-3/assets/styles-JE8YjOlG.js">
+    <link rel="modulepreload" crossorigin href="/practice-js-3/assets/vendor-CWxt7QI6.js">
+    <link rel="stylesheet" crossorigin href="/practice-js-3/assets/styles-CTxpv8u5.css">
   </head>
   <body>
     <header class="header">
   <div class="container header__container">
     <a class="logo" href="./index.html" aria-label="Site logo">
       <svg class="logo__icon" width="100" height="30">
-        <use href="/blended_products/assets/sprite-E8vg0sBb.svg#logo"></use>
+        <use href="/practice-js-3/assets/sprite-E8vg0sBb.svg#logo"></use>
       </svg>
     </a>
 
@@ -63,7 +65,11 @@
     <main>
       <section class="section">
         <div class="container">
-          <ul class="categories"></ul>
+          <ul class="categories">
+            <li class="categories__item">
+              <button class="categories__btn" type="button">all</button>
+            </li>
+          </ul>
           <ul class="products"></ul>
           <button class="load-more-btn is-hidden">Load More</button>
           <div class="not-found">
