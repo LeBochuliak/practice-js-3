@@ -1,29 +1,18 @@
 //Логіка сторінки Home
 
-import { categoriesAxios, productsAxios, categoryAxios  } from "./js/products-api";
-import { categoriesList, productsList } from "./js/refs";
-import { startCategoryPagination, endCategoryPagination } from "./js/constants";
+import { categoriesAxios, productsAxios } from "./js/products-api";
+import { categoriesList, productsList, modalConteiner } from "./js/refs";
 import { defaultCategory } from "./js/helpers";
+import { categoryProductsHandler, productHandler } from "./js/handlers";
+import { modalHandler } from "./js/modal";
 
 categoriesAxios();
 productsAxios();
 defaultCategory();
 
 
-categoriesList.addEventListener('click', (event) => {
-    if (event.target.tagName !== 'BUTTON') {
-        return;
-    }
-    categoriesList.querySelectorAll('.categories__btn').forEach((el) => el.classList.remove('categories__btn--active'));
-    
-    event.target.classList.add('categories__btn--active');
-    if (event.target.textContent === 'all') {
-        productsList.innerHTML = '';
-        productsAxios();
-        return;
-    }
-    
-    productsList.innerHTML = '';
-    categoryAxios(event.target.textContent, startCategoryPagination, endCategoryPagination);
-    
-})
+categoriesList.addEventListener('click', categoryProductsHandler);
+
+productsList.addEventListener('click', productHandler);
+
+modalConteiner.addEventListener('click', modalHandler);

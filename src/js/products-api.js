@@ -1,7 +1,7 @@
 // функції для запитів на бекенд.
 
 import axios from 'axios';
-import { renderCategoriesList, renderProductsList } from './render-function';
+import { renderCategoriesList, renderProductsList, renderProduct } from './render-function';
 import { emptyContainer } from './refs';
 
 axios.defaults.baseURL = 'https://dummyjson.com/products';
@@ -11,14 +11,20 @@ export function categoriesAxios() {
     .then(response => response.data.forEach(el => {
         renderCategoriesList(el);
     }))
-    .catch(error => console.log(error))
+    .catch(error => {
+            console.error('Error loading categories data:', error);
+            alert('Unfortunately, the categories data could not be loaded. Please try again later.');
+        })
 };
 
 export function productsAxios() {
     let currentPage = 1;
     axios.get(`?limit=12&skip=${(currentPage - 1)* 12}`)
         .then(response => renderProductsList(response.data.products, 'all'))
-        .catch(error => error)
+        .catch(error => {
+            console.error('Error loading products data:', error);
+            alert('Unfortunately, the products data could not be loaded. Please try again later.');
+        })
         
 };
 
@@ -32,5 +38,18 @@ export function categoryAxios(category, startPagination, endPagination) {
             emptyContainer.classList.remove('not-found--visible');
             renderProductsList(response.data.products.slice(startPagination, endPagination), category);           
         })
-        .catch(error => error)
-}
+        .catch(error => {
+            console.error('Error loading category data:', error);
+            alert('Unfortunately, the category data could not be loaded. Please try again later.');
+        })
+};
+
+export function productAxios(id) {
+    axios.get(`/${id}`)
+        .then(response => renderProduct(response.data))
+        .catch(error => {
+            console.error('Error loading product data:', error);
+            alert('Unfortunately, the product data could not be loaded. Please try again later.');
+        })
+        
+};
