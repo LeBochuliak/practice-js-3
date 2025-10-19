@@ -26,10 +26,11 @@ export function renderProductsList(products, category) {
     productsList.insertAdjacentHTML('beforeend', markup);
 };
 
-export function renderProduct({images, title, price, tags, description, shippingInformation, returnPolicy}) {
+export function renderProduct({id, images, title, price, tags, description, shippingInformation, returnPolicy}) {
     const markupTags = tags.map(el => `<li><p>${el}</p></li>`).join("");
     const markup =  
-        `<img class="modal-product__img" src="${images[0]}" alt="${title}" />
+        `<div class="js-modal-product-container" data-id=${id}>
+            <img class="modal-product__img" src="${images[0]}" alt="${title}" />
             <div class="modal-product__content">
                 <p class="modal-product__title">${title}</p>
                 <ul class="modal-product__tags">${markupTags}</ul>
@@ -39,6 +40,8 @@ export function renderProduct({images, title, price, tags, description, shipping
                 <p class="modal-product__price">Price: ${price}$</p>
                 <button class="modal-product__buy-btn" type="button">Buy</button>
             </div>
+        </div>
+        
 `;
     modalContentContainer.insertAdjacentHTML('beforeend', markup)
 }

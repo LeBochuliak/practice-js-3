@@ -18,3 +18,5 @@ export const formSubmitted = {
     }
 }
 
+export const cartProducts = [];
+export const wishlistProducts = [];

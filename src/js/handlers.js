@@ -25,7 +25,8 @@ export function categoryProductsHandler(event) {
 export function productHandler(event) {
     const li = event.target.closest('li');
     if (!li) return;
-    productAxios(li.dataset.id);   
+    productAxios(li.dataset.id);  
+    
     modalConteiner.classList.add('modal--is-open');
 }
 
