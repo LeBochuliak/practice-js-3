@@ -2,7 +2,7 @@
 import { categoriesList, productsList, modalConteiner, formEl } from "./refs";
 import { productsListAxios, categoryAxios, productAxios, searchAxios } from "./products-api";
 import { currentPage } from "./constants";
-import { defaultCategory } from "./helpers";
+import { defaultCategory, modalCartBtnText, modalWishlistBtnText } from "./helpers";
 
 export function categoryProductsHandler(event) {
     if (event.target.tagName !== 'BUTTON') {
@@ -25,6 +25,8 @@ export function categoryProductsHandler(event) {
 export function productHandler(event) {
     const li = event.target.closest('li');
     if (!li) return;
+    modalCartBtnText(li.dataset.id);
+    modalWishlistBtnText(li.dataset.id)
     productAxios(li.dataset.id);  
     
     modalConteiner.classList.add('modal--is-open');

@@ -2,13 +2,14 @@
 
 import { categoriesAxios, productsListAxios } from "./js/products-api";
 import { categoriesList, productsList, modalConteiner, formEl, loadMoreBtn } from "./js/refs";
-import { defaultCategory, clearSearchBtn } from "./js/helpers";
+import { defaultCategory, clearSearchBtn, cartCountFoo } from "./js/helpers";
 import { categoryProductsHandler, productHandler, searchHandler, loadMoreHandler} from "./js/handlers";
 import { modalHandler } from "./js/modal";
 
 categoriesAxios();
 productsListAxios();
 defaultCategory();
+cartCountFoo();
 
 
 categoriesList.addEventListener('click', categoryProductsHandler);

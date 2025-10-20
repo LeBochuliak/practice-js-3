@@ -18,5 +18,9 @@ export const formSubmitted = {
     }
 }
 
-export const cartProducts = [];
-export const wishlistProducts = [];
+export const cartProducts = {
+    products: JSON.parse(localStorage.getItem('cart')) || [],
+};
+export const wishlistProducts = {
+    products: JSON.parse(localStorage.getItem('wishlist')) || [],
+};
