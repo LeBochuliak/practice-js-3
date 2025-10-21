@@ -1,7 +1,8 @@
 // допоміжні функції, які знадобляться для реалізації завдання
-import { categoriesList, productsList, modalCartBtn, cartCount, wishlistCount, modalWishlistBtn } from "./refs";
+import { categoriesList, productsList, modalCartBtn, cartCount, wishlistCount, modalWishlistBtn, cartSummarySidebar } from "./refs";
 import { productsListAxios } from "./products-api";
 import { currentPage, cartProducts, wishlistProducts } from "./constants";
+
 
 export function defaultCategory() {
    if(categoriesList.querySelector('.categories__btn').textContent === 'all'){
@@ -57,3 +58,6 @@ export function cartCountFoo() {
    cartCount.textContent = cart.length;
    wishlistCount.textContent = wishlist.length;
 };
+
+
+

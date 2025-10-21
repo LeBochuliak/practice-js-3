@@ -3,7 +3,7 @@
 import axios from 'axios';
 import { renderCategoriesList, renderProductsList, renderProduct } from './render-function';
 import { emptyContainer, loadMoreBtn } from './refs';
-import { currentPage } from './constants';
+import { currentPage, cartProducts } from './constants';
 
 axios.defaults.baseURL = 'https://dummyjson.com/products';
 
@@ -86,4 +86,32 @@ export function searchAxios(value) {
             alert('Unfortunately, the products data could not be loaded. Please try again later.');
         })
 
-}
+};
+
+export async function wishlistAxios(wishlist) {
+    try {
+    const requests = wishlist.map(id => axios.get(`/${id}`));
+    const responses = await Promise.all(requests);
+    const products = responses.map(res => res.data);
+    renderProductsList(products, 'all');
+    }
+    catch (error) {
+        console.error("Error", error);
+    }
+};
+
+export async function cartAxios(cart) {
+    try {
+    cartProducts.totalPrice = 0;
+    const requests = cart.map(id => axios.get(`/${id}`));
+    const responses = await Promise.all(requests);
+    const products = responses.map(res => res.data);
+    cartProducts.totalPrice = products
+      .reduce((sum, el) => sum + el.price, 0);
+    
+    renderProductsList(products, 'all');
+    }
+    catch (error) {
+        console.error("Error", error);
+    }
+};

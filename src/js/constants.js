@@ -20,6 +20,7 @@ export const formSubmitted = {
 
 export const cartProducts = {
     products: JSON.parse(localStorage.getItem('cart')) || [],
+    totalPrice: 0,
 };
 export const wishlistProducts = {
     products: JSON.parse(localStorage.getItem('wishlist')) || [],
