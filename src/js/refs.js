@@ -12,3 +12,6 @@ export const cartCount = document.querySelector('[data-cart-count]');
 export const modalWishlistBtn = document.querySelector('.modal-product__btn--wishlist');
 export const wishlistCount = document.querySelector('[data-wishlist-count]');
 export const cartSummarySidebar = document.querySelector('.cart-summary');
+export const loader = document.querySelector('.loader');
+export const categoryAllBtn = document.querySelector('.category-all');
+export const modalLoader = document.querySelector('.modal-loader');

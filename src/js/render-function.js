@@ -38,7 +38,6 @@ export function renderProduct({id, images, title, price, tags, description, ship
                 <p class="modal-product__shipping-information">Shipping: ${shippingInformation}</p>
                 <p class="modal-product__return-policy">Return Policy: ${returnPolicy}</p>
                 <p class="modal-product__price">Price: ${price}$</p>
-                <button class="modal-product__buy-btn" type="button">Buy</button>
             </div>
         </div>
         

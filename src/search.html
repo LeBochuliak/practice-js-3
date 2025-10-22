@@ -4,24 +4,22 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home page</title>
+    <title>Search</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css"
+    />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
     <load
       src="./partials/header.html"
-      icon-path="img/sprite.svg#logo"
-      highlight-home="nav__link--active"
+      icon-path="./img/sprite.svg#logo"
     />
 
     <main>
       <section class="section">
         <div class="container">
-          <ul class="categories">
-            <li class="categories__item category-all hidden-category-all">
-              <button class="categories__btn" type="button">all</button>
-            </li>
-          </ul>
           <ul class="products"></ul>
           <button class="load-more-btn is-hidden">Load More</button>
           <div class="loader hidden"></div>
@@ -55,6 +53,6 @@
       </section>
     </main>
     <load src="./partials/modal.html" />
-    <script type="module" src="./home.js"></script>
+    <script type="module" src="./search.js"></script>
   </body>
 </html>

@@ -40,23 +40,40 @@ export function searchHandler(event) {
         productsList.innerHTML = '';
         productsListAxios();
         return;
-    } 
-    categoriesList.querySelectorAll('.categories__btn').forEach((el) => el.classList.remove('categories__btn--active'));
-    defaultCategory();
+    }; 
+    if (window.location.pathname.endsWith('index.html')) {
+        categoriesList.querySelectorAll('.categories__btn').forEach((el) => el.classList.remove('categories__btn--active'));
+        defaultCategory();
+    }
     productsList.innerHTML = '';
     searchAxios(event.target.elements.searchValue.value); 
 };
 
 export function loadMoreHandler() {
-    const category = document.querySelector('.categories__btn--active').textContent;
     currentPage.page ++;
+    if (window.location.pathname.endsWith('index.html')) {
+    const category = document.querySelector('.categories__btn--active').textContent;
     if (category !== 'all') {
         categoryAxios(category);
         return;
     };
+    };
+
     if (formEl.querySelector('input') !== '') {
         searchAxios(formEl.querySelector('input').value);
         return;
     }
+    
     productsListAxios();
-}
+};
+
+export function searchPageHandler(value) {
+    currentPage.page = 1;
+    if (value.trim() === '') {
+        alert('Please, enter a search term!');
+        return;
+    } 
+    productsList.innerHTML = '';
+    searchAxios(value); 
+};
+

@@ -1,5 +1,5 @@
 //Логіка сторінки Wishlist
-import { cartCountFoo } from "./js/helpers";
+import { cartCountFoo, goToSearch } from "./js/helpers";
 import { wishlistAxios } from "./js/products-api";
 import { modalConteiner, productsList } from "./js/refs";
 import { modalHandler } from "./js/modal";
@@ -23,3 +23,5 @@ modalConteiner.addEventListener('click', (event) => {
         }
     
 });
+
+formEl.addEventListener('submit', goToSearch);

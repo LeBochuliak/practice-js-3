@@ -94,3 +94,7 @@
   font-size: 0.9rem;
   text-align: center;
 }
+
+.icon-check:before {
+  content: "\ea10";
+}

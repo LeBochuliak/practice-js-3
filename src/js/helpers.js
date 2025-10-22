@@ -16,8 +16,10 @@ export function clearSearchBtn(event) {
       currentPage.page = 1;
       input.value = '';
       productsList.innerHTML = '';
+      if (window.location.pathname.endsWith('index.html')) {
       categoriesList.querySelectorAll('.categories__btn').forEach((el) => el.classList.remove('categories__btn--active'));
       defaultCategory();
+      }
       productsListAxios();
    }
 };
@@ -59,5 +61,13 @@ export function cartCountFoo() {
    wishlistCount.textContent = wishlist.length;
 };
 
-
+export function goToSearch(event) {    
+    event.preventDefault()
+    if (event.currentTarget.elements.searchValue.value.trim() === '') {
+            alert('Please, enter a search term!');
+            return;
+        } 
+    localStorage.setItem('searchValue', JSON.stringify(event.currentTarget.elements.searchValue.value));
+    window.location.href = './search.html';   
+}
 

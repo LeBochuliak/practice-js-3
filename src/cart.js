@@ -1,10 +1,12 @@
 //Логіка сторінки Cart
-import { cartCountFoo } from "./js/helpers";
-import { productHandler } from "./js/handlers";
+import { cartCountFoo, goToSearch } from "./js/helpers";
+import { productHandler, searchHandler } from "./js/handlers";
 import { modalHandler } from "./js/modal";
-import { productsList, modalConteiner, cartSummarySidebar } from "./js/refs";
+import { productsList, modalConteiner, cartSummarySidebar, formEl } from "./js/refs";
 import { cartAxios } from "./js/products-api";
 import { cartProducts } from "./js/constants";
+
+
 
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
@@ -35,6 +37,7 @@ modalConteiner.addEventListener('click', async (event) => {
 
 
 cartSummarySidebar.addEventListener('click', event => {
+    
     const btn = event.target.closest('.cart-summary__btn');
     if(btn) {
         iziToast.success({
@@ -46,9 +49,13 @@ cartSummarySidebar.addEventListener('click', event => {
             messageColor: 'white',
             titleColor: 'white',
             closeOnClick: true,
+            closeOnEscape: true,
             progressBar: false,
+            icon: 'fa fa-check-circle',
             iconColor: 'white',
-            timeout: 50000,
         });
     }
 });
+
+formEl.addEventListener('submit', goToSearch);
+
